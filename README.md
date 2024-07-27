@@ -17,12 +17,12 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 ### Setup
 
 1. Clone this repository:
-	```bash
-	git clone https://github.com/yourusername/Sentiment-Analysis-on-Amazon-Reviews.git```
+	bash
+	git clone https://github.com/yourusername/Sentiment-Analysis-on-Amazon-Reviews.git
 
 2. Navigate to the project directory:
-	```bash
-	cd Sentiment-Analysis-on-Amazon-Reviews```
+	bash
+	cd Sentiment-Analysis-on-Amazon-Reviews
 
 ### Usage
 
