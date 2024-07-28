@@ -59,6 +59,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 		- F1-Score
 
 ### 'evaluationMetrics()'
+
 ```python
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
@@ -73,8 +74,7 @@ def evaluationMetrics(y_true, y_pred):
         "F1-Score": model_f1
     }
     
-    return model_result
-
+    return model_result```
 
 ## Model Performance (Accuracy):
 
