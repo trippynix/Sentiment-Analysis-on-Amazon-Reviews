@@ -19,24 +19,16 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 1. Clone this repository:
 
 	```bash
-	git clone https://github.com/trippynix/Sentiment-Analysis-on-Amazon-Reviews.git
+	git clone https://github.com/trippynix/Sentiment-Analysis-on-Amazon-Reviews.git```
 
 2. Navigate to the project directory:
 	```bash
-	cd Sentiment-Analysis-on-Amazon-Reviews
+	cd Sentiment-Analysis-on-Amazon-Reviews```
 
 3. Install required dependencies:
 	```bash
 	pip install scikit-learn
-	pip install joblib
-
-## Usage
-
-1. Preprocess Data: The data has already been preprocessed. You can run the code.
-2. Run Naive Bayes Model: The code snippet is written I just have a few errors I need to work on before training the model. I will also provide the saved trained model.
-3. Future Work: 
-	Implement deep learning models.
-	Evaluate and compare performance metrics.
+	pip install joblib```
 
 ## Steps involved
 
