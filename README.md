@@ -41,22 +41,22 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 ## Steps involved
 
 1. Data Preparation:
-- Changed column names to 'Polarity', 'Title', and 'Text'.
-- Converted the 'Polarity' column values from integers to strings. (mapped 1 -> 'Negative' and 2 -> 'Positive')
+	- Changed column names to 'Polarity', 'Title', and 'Text'.
+	- Converted the 'Polarity' column values from integers to strings. (mapped 1 -> 'Negative' and 2 -> 'Positive')
 
 2. Feature Engineering:
-- Utilized ColumnTransformer to apply TF-IDF on the train data features, which included 'Title' and 'Text' columns.
+	- Utilized ColumnTransformer to apply TF-IDF on the train data features, which included 'Title' and 'Text' columns.
 
 3. Model Training:
-- Trained two models: ComplementNB and MultinomialNB.
+	- Trained two models: ComplementNB and MultinomialNB.
 
 4. Model Evaluation:
-- Created a helper function called 'evaluationMetrics' to evaluate the models on test data.
-- The evaluationMetrics function provides output in the form of a dictionary with the following metrics:
-	- Accuracy
-	- Precision
-	- Recall
-	- F1-Score
+	- Created a helper function called 'evaluationMetrics' to evaluate the models on test data.
+	- The evaluationMetrics function provides output in the form of a dictionary with the following metrics:
+		- Accuracy
+		- Precision
+		- Recall
+		- F1-Score
 
 ### 'evaluationMetrics()
 ```python
