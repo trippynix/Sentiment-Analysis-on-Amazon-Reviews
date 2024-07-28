@@ -6,8 +6,8 @@ This project involves sentiment analysis on Amazon reviews to classify reviews a
 
 ## Current Status
 
-As of now, the data preprocessing has been completed. The dataset has been cleaned and prepared for further analysis. 
-The next steps include applying a Naive Bayes model for sentiment classification. Future plans involve experimenting with deep learning algorithms to potentially improve performance and accuracy.I have developed two models, ComplementNB and MultinomialNB, both of which perform exactly the same with an accuracy of 87.69%.
+As of now, the data preprocessing has been almost completed. The dataset has been cleaned and prepared for further analysis. 
+The current steps include applying a Naive Bayes model for sentiment classification. Future plans involve experimenting with deep learning algorithms to potentially improve performance and accuracy.I have developed two models, ComplementNB and MultinomialNB, both of which perform exactly the same with an accuracy of 87.69%.
 
 ## Dataset
 
