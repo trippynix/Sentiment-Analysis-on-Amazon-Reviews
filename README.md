@@ -66,7 +66,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
         	"F1-Score": model_f1
     		}
     
-		return model_result```
+	    return model_result
 
 ## Model Performance (Accuracy):
 
