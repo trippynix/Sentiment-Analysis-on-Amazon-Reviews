@@ -19,16 +19,16 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 1. Clone this repository:
 
 	```bash
-	git clone https://github.com/trippynix/Sentiment-Analysis-on-Amazon-Reviews.git```
+	git clone https://github.com/trippynix/Sentiment-Analysis-on-Amazon-Reviews.git
 
 2. Navigate to the project directory:
 	```bash
-	cd Sentiment-Analysis-on-Amazon-Reviews```
+	cd Sentiment-Analysis-on-Amazon-Reviews
 
 3. Install required dependencies:
 	```bash
 	pip install scikit-learn
-	pip install joblib```
+	pip install joblib
 
 ## Steps involved
 
@@ -52,7 +52,6 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 
 ### 'evaluationMetrics()'
 
-	```python
 	from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 	def evaluationMetrics(y_true, y_pred):
@@ -66,7 +65,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 	       	"F1-Score": model_f1
 		}
 	    
-	    return model_result```
+	    return model_result
 
 ## Model Performance (Accuracy):
 
