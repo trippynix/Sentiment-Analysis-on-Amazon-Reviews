@@ -52,7 +52,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 
 ### 'evaluationMetrics()'
 
-	```python
+```python
 	from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 	def evaluationMetrics(y_true, y_pred):
