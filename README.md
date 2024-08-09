@@ -1,13 +1,18 @@
 # Sentiment Analysis on Amazon Reviews
 
-## Project Description
+In this project, neural networks and Naive Bayes models are used to analyze sentiment in Amazon reviews. Sorting reviews into positive and negative categories according to their substance is the main objective.
 
-This project involves sentiment analysis on Amazon reviews to classify reviews as positive or negative. 
+## Project Overview
 
-## Current Status
+- Data: Amazon reviews dataset
+- Models: Naive Bayes models (ComplementNB, MultinomialNB) and a neural network model (RNN)
+- Metrics: Accuracy, Precision, Recall, F1-Score
 
-As of now, the data preprocessing has been almost completed. The dataset has been cleaned and prepared for further analysis. 
-The current steps include applying a Naive Bayes model for sentiment classification. Future plans involve experimenting with deep learning algorithms to potentially improve performance and accuracy.I have developed two models, ComplementNB and MultinomialNB, both of which perform exactly the same with an accuracy of 87.69%.
+## Files
+
+- "Sentiment_analysis_Amazon_Reviews_Naive_Bayesian_Models.ipynb": Jupyter notebook containing the implementation and evaluation of Naive Bayes models. 
+- "Sentiment Analysis on Amazon Reviews (Deep Neural Networks).ipynb": Jupyter notebook containing the implementation and evaluation of the Recurrent Neural Network (RNN) model stacked with Long short-term memory (LSTM) model.
+- "Saved_models": Contains all the saved trained models.
 
 ## Dataset
 
@@ -20,21 +25,30 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 
 	```bash
 	git clone https://github.com/trippynix/Sentiment-Analysis-on-Amazon-Reviews.git
+        ```
 
 2. Navigate to the project directory:
+	
 	```bash
 	cd Sentiment-Analysis-on-Amazon-Reviews
+	```
 
 3. Install required dependencies:
+	
 	```bash
+	pip install numpy
+	pip install pandas
+	pip install tensorflow
 	pip install scikit-learn
 	pip install joblib
+	```
 
-## Steps involved
+## Steps involved in training Naive Bayesian models
 
 1. Data Preparation:
 	- Changed column names to 'Polarity', 'Title', and 'Text'.
 	- Converted the 'Polarity' column values from integers to strings. (mapped 1 -> 'Negative' and 2 -> 'Positive')
+	- Saved the preprocessed data
 
 2. Feature Engineering:
 	- Utilized ColumnTransformer to apply TF-IDF on the train data features, which included 'Title' and 'Text' columns.
@@ -50,7 +64,24 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 		- Recall
 		- F1-Score
 
-### 'evaluationMetrics()'
+## Steps involved in training Neural Networks
+
+1. Data Preprocessing:
+	- Loaded the previously preprocessed data
+	- Mapped string values in 'Polarity' column i.e. 'Positive' and 'Negative' to 1 and 0 respectively
+	- Sliced the data to 10% of it's original size as my local system was not capable of processing such vast amount of data
+	- Split the data into 'train_features', 'train_target' and 'test_features', 'test_target' and 'val_features', 'val_target' sets	
+
+2. Feature Engineering:
+	- Initialized 'int' type vectorizor and 'TF-IDF' type vectorizer.
+	- Adapted the vectorizors to train_features. 
+	- Created embedding
+
+3. Model training:
+	- Trained GRU stacked with LSTM layers model (Both belong to the RNN family)
+	- Compiled the model and fit the model on 'train_features' and 'train_target'
+
+### evaluationMetrics()
 
 	from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
@@ -67,12 +98,47 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 	    
 	    return model_result
 
-## Model Performance (Accuracy):
+## Model Performance (Accuracy on test data):
 
 1. ComplementNB : 87.69%
 2. MultinomialNB : 87.69%
+3. RNN (GRU and LSTM) : 93.17%
+
+## Using the saved models
+
+To use the saved RNN model for predictions, you can load it using the following code:
+
+```python
+from tensorflow.keras.models import load_model
+import tensorflow as tf
+
+# Load the model
+loaded_model = load_model('RNN_model')
+
+# Predict using the loaded model
+RNN_model_intVect_pred = loaded_model.predict(test_features)
+
+# Squeeze the predicted data to 0 and 1
+RNN_model_intVect_pred = tf.squeeze(tf.round(RNN_model_intVect_pred))
+
+# Evaluate the model's performance
+RNN1_eval = evaluationMetrics(test_target, RNN_model_intVect_pred)
+print(f"Result of the model on unseen data: {RNN1_eval}")
+```
+
+## Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+
+Ensure that the predictions are binary before passing them to the 'evaluationMetrics' function.
 
 ## Contributing
 
-Feel free to fork the repository and submit a pull request. Contributions and feedback are welcome!
+Feel free to fork the repository and submit a pull request. For any issues or suggestions, please open an issue on the GitHub repository.
 
+## **LICENSE**
+
+This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
