@@ -1,5 +1,5 @@
-kagglehub
-pandas
-seaborn
-matplotlib
-scikit-learn
+kagglehub==0.3.13
+pandas==2.3.2
+seaborn==0.13.2
+matplotlib==3.10.6
+scikit-learn==1.7.1
