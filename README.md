@@ -36,27 +36,45 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 3. Install required dependencies:
 	
 	```bash
-	pip install numpy
-	pip install pandas
-	pip install tensorflow
-	pip install scikit-learn
-	pip install joblib
+	pip install -r requirements.txt
 	```
 
 ## Steps involved in training Naive Bayesian models
 
-1. Data Preparation:
-	- Changed column names to 'Polarity', 'Title', and 'Text'.
-	- Converted the 'Polarity' column values from integers to strings. (mapped 1 -> 'Negative' and 2 -> 'Positive')
-	- Saved the preprocessed data
+1. EDA:
+	- Dataset contains 3.6M reviews with balanced polarity (1.8M positive, 1.8M negative).
+	- Average review length is ~100 words, with some very short (1 word) and very long reviews (>200 words).
+	- Found minor inconsistencies in polarity labels (e.g., whitespace “2 ”), which were cleaned.
+	- No significant class imbalance, so no resampling required.
 
-2. Feature Engineering:
+2. Data Preprocessing:
+	- Column Fixing
+		- The CSV files had the actual column names stored in the first row.
+		- These were extracted and properly set as column headers: Polarity, Title, Text.
+	- Label Cleaning
+		- The Polarity column (target) was cleaned by stripping whitespace and converting all values to integers.
+	- Handling Missing and Duplicate Values
+		- Rows with missing Title or Text were removed.
+		- Duplicate reviews (based on the Text column) were dropped to ensure data quality.
+	- Text Cleaning
+		- All text was converted to lowercase.
+		- URLs, HTML tags, and special characters were removed.
+		- This produced a new column Clean_Text containing cleaned review text.
+	- Combining Title and Text
+		- The Title and cleaned Text were concatenated to form a single input feature Input_Text for the model.
+	- Vectorization
+		- TF-IDF vectorization was applied to Input_Text with a maximum of 5000 features.
+		- This converts text data into numerical feature vectors suitable for the Naive Bayes model.
+	- Saving Preprocessed Data
+		- The vectorized features and labels for both train and test sets were saved using joblib for easy loading during modeling.
+
+3. Feature Engineering:
 	- Utilized ColumnTransformer to apply TF-IDF on the train data features, which included 'Title' and 'Text' columns.
 
-3. Model Training:
+4. Model Training:
 	- Trained two models: ComplementNB and MultinomialNB.
 
-4. Model Evaluation:
+5. Model Evaluation:
 	- Created a helper function called 'evaluationMetrics' to evaluate the models on test data.
 	- The evaluationMetrics function provides output in the form of a dictionary with the following metrics:
 		- Accuracy
@@ -82,7 +100,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 	- Compiled the model and fit the model on 'train_features' and 'train_target'
 
 ### evaluationMetrics()
-
+	```python
 	from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 	def evaluationMetrics(y_true, y_pred):
@@ -97,6 +115,7 @@ https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews/
 		}
 	    
 	    return model_result
+	```
 
 ## Model Performance (Accuracy on test data):
 

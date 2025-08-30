@@ -1,0 +1,25 @@
+# Data
+/data/
+
+# Preprocessed files (if you want to keep raw CSV but not .pkl)
+*.pkl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.python-version
+/python3.11
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
